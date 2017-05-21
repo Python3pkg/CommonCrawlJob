@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 
 import re
 
@@ -68,7 +68,7 @@ class CommonCrawl(MRJob):
         try:
             return tail.decode('utf-8')
         except UnicodeDecodeError:
-            return unicode()
+            return str()
 
     def read_warc(self, key):
         keypath = 's3://aws-publicdatasets/{key}'.format(key=key)

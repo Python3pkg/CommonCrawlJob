@@ -36,11 +36,11 @@ def gen_redshift_query():
     if sys.version_info.major == 2:
         input = raw_input
 
-    aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or input("AWS_ACCESS_KEY: ")
-    aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or input("AWS_SECRET_ACCESS_KEY")
+    aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or eval(input("AWS_ACCESS_KEY: "))
+    aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or eval(input("AWS_SECRET_ACCESS_KEY"))
 
-    s3_bucket = input("S3 Output Bucket: ")
-    output_table = input("Output Redshift Table: ")
+    s3_bucket = eval(input("S3 Output Bucket: "))
+    output_table = eval(input("Output Redshift Table: "))
 
     upload = """
         COPY           \'cc.{output_table}\'

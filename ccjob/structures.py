@@ -37,7 +37,7 @@ class CaseInsensitiveDict(MutableMapping):
         self.update(data, **kwargs)
 
     def __repr__(self):
-        return str(dict(self.items()))
+        return str(dict(list(self.items())))
 
     def __setitem__(self, key, value):
         # Use the lowercased key for lookups, but store the actual
@@ -51,7 +51,7 @@ class CaseInsensitiveDict(MutableMapping):
         del self._d[key.lower()]
 
     def __iter__(self):
-        return (k for k, v in self._d.values())
+        return (k for k, v in list(self._d.values()))
 
     def __len__(self):
         return len(self._d)
@@ -66,11 +66,11 @@ class CaseInsensitiveDict(MutableMapping):
 
     # Copy is required
     def copy(self):
-        return CaseInsensitiveDict(self._d.values())
+        return CaseInsensitiveDict(list(self._d.values()))
 
     def lower_items(self):
         """
         Like iteritems(), but with all lowercase keys
         """
-        return ((k, v[1]) for (k, v) in self._d.items())
+        return ((k, v[1]) for (k, v) in list(self._d.items()))
 
